@@ -1,6 +1,27 @@
-type ExampleEntity @entity {
+type Factory @entity {
   id: ID!
   count: BigInt!
   token0: Bytes! # address
   token1: Bytes! # address
+  feeTo: BigInt!
+  feeToSetter: BigInt! # Owner address who can set the fees
+  lpToken: Bytes!
 }
+
+type Pair @entity {
+    id: ID! # lp address
+    token0: Bytes!
+    token1: Bytes!
+    swapFees: BigInt
+    reserve0: BigInt
+    reserve1: BigInt
+    blockTimestampLast: BigInt
+}
+
+type UserPair @entity {
+    id: ID! # Pair + User address
+    totalAmount: BigInt!
+    user: Bytes
+    pair: Bytes
+}
+
